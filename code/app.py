@@ -4,10 +4,10 @@ MIMIC-Explorer: Consolidated Interactive Dashboard
 ================================================================================
 
 An interactive Streamlit dashboard for exploring the MIMIC-IV clinical database.
-Developed for Harvard Data Visualization course.
+Developed for Harvard Data Visualization for Biomedical Applications course.
 
-Authors: Ro + Team
-Date: December 2024
+Authors: Douglas Jiang, Rodrigo Gameiro, Wanyan Yuan, Yuan Tian
+Date: December 2025
 
 Structure:
     SECTION 1: Imports & Page Configuration
@@ -2157,4 +2157,4 @@ with st.expander("🔍 Preview Raw Data (click to expand)"):
 # =============================================================================
 
 st.divider()
-st.caption("MIMIC-Explorer | Harvard Data Visualization Course | December 2024")
+st.caption("MIMIC-Explorer | Harvard Medical School | Data Visualization for Biomedical Applications | 2025")
