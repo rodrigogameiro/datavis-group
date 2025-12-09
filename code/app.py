@@ -1156,6 +1156,7 @@ with tab2:
             x=alt.X('anchor_age:Q', bin=alt.Bin(step=10), title='Age'),
             y=alt.Y('count()', title='Patients'),
             tooltip=[
+                alt.Tooltip('long_title:N', title='Diagnosis'),
                 alt.Tooltip('anchor_age:Q', bin=alt.Bin(step=10), title='Age Range'),
                 alt.Tooltip('count()', title='Patients')
             ]
@@ -1179,7 +1180,7 @@ with tab2:
         
         for code in top_6_codes:
             dx_name = dx_counts[dx_counts['icd_code'] == code]['long_title'].values[0]
-            short_name = smart_truncate(dx_name, 20)
+            short_name = smart_truncate(dx_name, 50)
             
             pts = dx_with_names[dx_with_names['icd_code'] == code]['subject_id'].unique()
             dx_admissions = admissions[admissions['subject_id'].isin(pts)]
