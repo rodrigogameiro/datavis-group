@@ -40,6 +40,7 @@ import altair as alt
 import plotly.graph_objects as go
 import numpy as np
 from itertools import combinations, product
+from pathlib import Path
 
 # Page configuration - must be first Streamlit command
 st.set_page_config(
@@ -85,31 +86,32 @@ def load_data():
         - procedures: Procedure codes (procedures_icd)
         - d_icd_procedures: Procedure code descriptions
     """
-    data_path = "../data/"
+    SCRIPT_DIR = Path(__file__).parent.resolve()
+    data_path = SCRIPT_DIR.parent / "data"
     
     # Core tables (required)
-    patients = pd.read_csv(data_path + "patients.csv")
+    patients = pd.read_csv(data_path / "patients.csv")
     admissions = pd.read_csv(
-        data_path + "admissions.csv",
+        data_path / "admissions.csv",
         parse_dates=["admittime", "dischtime", "deathtime"]
     )
-    diagnoses = pd.read_csv(data_path + "diagnoses_icd.csv")
-    d_icd_diagnoses = pd.read_csv(data_path + "d_icd_diagnoses.csv")
+    diagnoses = pd.read_csv(data_path / "diagnoses_icd.csv")
+    d_icd_diagnoses = pd.read_csv(data_path / "d_icd_diagnoses.csv")
     
     # Lab data
-    labevents = pd.read_csv(data_path + "labevents.csv")
-    d_labitems = pd.read_csv(data_path + "d_labitems.csv")
+    labevents = pd.read_csv(data_path / "labevents.csv")
+    d_labitems = pd.read_csv(data_path / "d_labitems.csv")
     
     # Medication data
-    prescriptions = pd.read_csv(data_path + "prescriptions.csv")
-    pharmacy = pd.read_csv(data_path + "pharmacy.csv")
+    prescriptions = pd.read_csv(data_path / "prescriptions.csv")
+    pharmacy = pd.read_csv(data_path / "pharmacy.csv")
     
     # ICU data
-    icustays = pd.read_csv(data_path + "icustays.csv")
+    icustays = pd.read_csv(data_path / "icustays.csv")
     
     # Procedure data
-    procedures = pd.read_csv(data_path + "procedures_icd.csv")
-    d_icd_procedures = pd.read_csv(data_path + "d_icd_procedures.csv")
+    procedures = pd.read_csv(data_path / "procedures_icd.csv")
+    d_icd_procedures = pd.read_csv(data_path / "d_icd_procedures.csv")
     
     # Parse date of death for mortality calculations
     if 'dod' in patients.columns:
